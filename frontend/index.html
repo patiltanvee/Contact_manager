@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContactHub - Manage Your Network Effortlessly</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- App Container -->
+    <div id="app" class="dark-mode">
+        
+        <!-- Landing Navigation -->
+        <nav class="landing-nav">
+            <div class="logo" id="logo-home-trigger" style="cursor: pointer;">
+                <span class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </span>
+                <span class="logo-text">ContactHub</span>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="nav-link" id="nav-contacts-trigger">Contacts</a>
+                <a href="#" class="nav-link" id="nav-add-trigger">Add Contact</a>
+                <a href="#features-section" class="nav-link">Features</a>
+                <a href="#" class="nav-link" id="nav-about-trigger">About</a>
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle theme">
+                    <svg class="mode-icon sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="mode-icon moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- ========================================================================= -->
+        <!-- 1. LANDING PAGE VIEW -->
+        <!-- ========================================================================= -->
+        <section id="landing-view" class="view-section active">
+
+            <!-- Hero Section -->
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="badge-dot"></span>
+                        USED BY 2,000+ PROFESSIONALS
+                    </div>
+                    <h1 class="hero-title">Transform Your Network,<br>Elevate Your <span class="italic-highlight">Connections.</span></h1>
+                    <p class="hero-subtitle">Search, organize, update, and delete your contacts in one beautiful platform. Designed for high-performance professionals who demand precision and speed.</p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary btn-lg" id="get-started-btn">
+                            Get Started
+                            <svg class="btn-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </button>
+                        <button class="btn btn-outline btn-lg" id="how-it-works-btn">See How It Works</button>
+                    </div>
+                </div>
+                <div class="hero-stack-wrapper">
+                    <div class="recently-connected-section">
+                        <div class="stack-wrapper">
+                            <div class="card-stack" id="landing-recent-card-stack">
+                                <!-- Dynamic stack of cards will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            
+
+        </section>
+
+
+        <!-- ========================================================================= -->
+        <!-- 2. DASHBOARD VIEW (MAIN APPLICATION LAYOUT) -->
+        <!-- ========================================================================= -->
+        <section id="dashboard-view" class="view-section active">
+            <div class="dashboard-container">
+                
+                <!-- NO SIDEBAR, DIRECT MAIN WORKSPACE -->
+
+                <!-- MAIN WORKSPACE PANEL -->
+                <main class="main-panel">
+                    
+                    <!-- ========================================== -->
+                    <!-- SCREEN A: CONTACTS LIST (DASHBOARD) -->
+                    <!-- ========================================== -->
+                    <div id="screen-contacts" class="dashboard-screen active">
+                        
+                        <!-- Top Bar Summary -->
+                        <div class="screen-header">
+                            <div>
+                                <h2 class="screen-title">Directory</h2>
+                            </div>
+                            <button class="btn btn-primary" id="dashboard-add-contact-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                Add New Contact
+                            </button>
+                        </div>
+
+                        <!-- Directory Filter & Search Panel -->
+                        <div class="directory-filter-bar">
+                            <div class="filter-group">
+                                <span class="filter-label">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px; vertical-align: middle;"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+                                    FILTER:
+                                </span>
+                                <button class="filter-tab active" data-category="all">All</button>
+                                <button class="filter-tab" data-category="Management">Management</button>
+                                <button class="filter-tab" data-category="Engineering">Engineering</button>
+                                <button class="filter-tab" data-category="Design">Design</button>
+                                <button class="filter-tab" data-category="Operations">Operations</button>
+                            </div>
+                            <div class="filter-controls-right">
+                                <div class="sort-group">
+                                    <span class="sort-label">SORT BY:</span>
+                                    <select id="directory-sort-select" class="sort-select">
+                                        <option value="name-asc">Name (A-Z)</option>
+                                        <option value="name-desc">Name (Z-A)</option>
+                                        <option value="company-asc">Company</option>
+                                    </select>
+                                </div>
+                                <div class="search-container">
+                                    <span class="search-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                                    </span>
+                                    <input type="text" id="contact-search-input" placeholder="Search Directory...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contacts Grid / List -->
+                        <div class="contacts-grid" id="contacts-grid-container">
+                            <!-- Cards will be dynamically injected here -->
+                        </div>
+
+                        <!-- Empty State Box -->
+                        <div class="empty-state" id="empty-state-container" style="display: none;">
+                            <div class="empty-state-illustration">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="17" y1="8" x2="22" y2="13"/><line x1="22" y1="8" x2="17" y2="13"/></svg>
+                            </div>
+                            <h3 id="empty-state-title">No contacts found</h3>
+                            <p id="empty-state-desc">Try clearing filters or search query.</p>
+                        </div>
+
+
+                        <!-- Features Grid Section at bottom of Workspace -->
+                        <div id="features-section" class="features-section" style="margin-top: 64px; margin-bottom: 0;">
+                            <h2 class="section-title">Powerful Features for Better Connections</h2>
+                            <div class="features-grid">
+                                <!-- Feature 1 -->
+                                <div class="feature-card">
+                                    <div class="feature-icon bg-purple">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                                    </div>
+                                    <h3>Instant Search</h3>
+                                    <p>Search your contacts instantly by name, email, or phone number. Find anyone in seconds with zero latency.</p>
+                                </div>
+                                <!-- Feature 2 -->
+                                <div class="feature-card">
+                                    <div class="feature-icon bg-green">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                    </div>
+                                    <h3>Smart Validation</h3>
+                                    <p>We validate inputs locally to prevent invalid formats and duplicate entries, keeping your database clean and active.</p>
+                                </div>
+                                <!-- Feature 3 -->
+                                <div class="feature-card">
+                                    <div class="feature-icon bg-blue">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                    </div>
+                                    <h3>Persistent Storage</h3>
+                                    <p>Your contacts are securely stored in your local browser storage. They persist across tab closes and page refreshes.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ========================================== -->
+                    <!-- SCREEN B: ADD NEW CONTACT SCREEN -->
+                    <!-- ========================================== -->
+                    <div id="screen-add-contact" class="dashboard-screen">
+                        <button class="back-link btn-back-dashboard">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                            Back to Dashboard
+                        </button>
+                        
+                        <div class="screen-header">
+                            <div>
+                                <h2 class="screen-title">Add New Contact</h2>
+                                <p class="screen-subtitle">Fill in the details below to add a new contact.</p>
+                            </div>
+                        </div>
+
+                        <!-- Form Card -->
+                        <div class="form-container">
+                            <form id="add-contact-form" novalidate>
+                                
+                                <div class="form-grid">
+                                    <!-- Full Name Field -->
+                                    <div class="form-group">
+                                        <label for="add-name">
+                                            Full Name <span class="required">*</span>
+                                        </label>
+                                        <div class="input-wrapper">
+                                            <span class="input-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                                            </span>
+                                            <input type="text" id="add-name" name="name" placeholder="e.g., Jane Doe" required>
+                                        </div>
+                                        <span class="error-msg" id="add-name-error"></span>
+                                    </div>
+
+                                    <!-- Email Field -->
+                                    <div class="form-group">
+                                        <label for="add-email">
+                                            Email Address <span class="required">*</span>
+                                        </label>
+                                        <div class="input-wrapper">
+                                            <span class="input-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                            </span>
+                                            <input type="email" id="add-email" name="email" placeholder="e.g., jane@company.com" required>
+                                        </div>
+                                        <span class="error-msg" id="add-email-error"></span>
+                                    </div>
+
+                                    <!-- Phone Field -->
+                                    <div class="form-group">
+                                        <label for="add-phone">
+                                            Phone Number <span class="required">*</span>
+                                        </label>
+                                        <div class="input-wrapper">
+                                            <span class="input-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                            </span>
+                                            <input type="tel" id="add-phone" name="phone" placeholder="e.g., +1 234 567 8900" required>
+                                        </div>
+                                        <span class="error-msg" id="add-phone-error"></span>
+                                    </div>
+
+                                    <!-- Company Field -->
+                                    <div class="form-group">
+                                        <label for="add-company">
+                                            Company <span class="optional">(Optional)</span>
+                                        </label>
+                                        <div class="input-wrapper">
+                                            <span class="input-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                                            </span>
+                                            <input type="text" id="add-company" name="company" placeholder="e.g., Acme Corporation">
+                                        </div>
+                                        <span class="error-msg" id="add-company-error"></span>
+                                    </div>
+
+                                    <!-- Role Field -->
+                                    <div class="form-group">
+                                        <label for="add-role">
+                                            Role <span class="optional">(Optional)</span>
+                                        </label>
+                                        <div class="input-wrapper">
+                                            <span class="input-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                                            </span>
+                                            <input type="text" id="add-role" name="role" placeholder="e.g., Lead Architect">
+                                        </div>
+                                        <span class="error-msg" id="add-role-error"></span>
+                                    </div>
+
+                                    <!-- Category Field -->
+                                    <div class="form-group">
+                                        <label for="add-category">
+                                            Category <span class="required">*</span>
+                                        </label>
+                                        <div class="input-wrapper">
+                                            <span class="input-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+                                            </span>
+                                            <select id="add-category" name="category" class="form-select">
+                                                <option value="General">General</option>
+                                                <option value="Management">Management</option>
+                                                <option value="Engineering">Engineering</option>
+                                                <option value="Design">Design</option>
+                                                <option value="Operations">Operations</option>
+                                            </select>
+                                        </div>
+                                        <span class="error-msg" id="add-category-error"></span>
+                                    </div>
+
+                                    <!-- Profile Image Field -->
+                                    <div class="form-group full-width">
+                                        <label>Profile Image <span class="optional">(Optional)</span></label>
+                                        <div class="photo-upload-wrapper">
+                                            <div class="photo-upload-box" id="add-photo-box">
+                                                <div class="photo-upload-preview" id="add-preview-container">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                                    <span class="upload-label">Upload Photo</span>
+                                                </div>
+                                                <input type="file" id="add-photo-file" accept="image/*" class="file-input-hidden">
+                                            </div>
+                                            <button type="button" class="btn btn-outline btn-sm clear-photo-btn" id="add-clear-photo" style="display:none;">Clear Photo</button>
+                                            <input type="hidden" id="add-photo" name="profile_image_url">
+                                        </div>
+                                        <span class="error-msg" id="add-photo-error"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="button" class="btn btn-outline btn-cancel-dashboard">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Save Contact</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- ========================================== -->
+                    <!-- SCREEN C: EDIT CONTACT DETAILS SCREEN -->
+                    <!-- ========================================== -->
+                    <div id="screen-edit-contact" class="dashboard-screen">
+                        <button class="back-link btn-back-dashboard">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                            Back to Dashboard
+                        </button>
+                        
+                        <div class="screen-header">
+                            <div>
+                                <h2 class="screen-title">Edit Contact Details</h2>
+                                <p class="screen-subtitle">Update the contact information below.</p>
+                            </div>
+                        </div>
+
+                        <!-- Form Card -->
+                        <div class="form-container">
+                            <form id="edit-contact-form" novalidate>
+                                <!-- Hidden input to hold current contact ID -->
+                                <input type="hidden" id="edit-contact-id">
+                                
+                                <div class="form-grid">
+                                    <!-- Full Name Field -->
+                                    <div class="form-group">
+                                        <label for="edit-name">
+                                            Full Name <span class="required">*</span>
+                                        </label>
+                                        <div class="input-wrapper">
+                                            <span class="input-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                                            </span>
+                                            <input type="text" id="edit-name" name="name" required>
+                                        </div>
+                                        <span class="error-msg" id="edit-name-error"></span>
+                                    </div>
+
+                                    <!-- Email Field -->
+                                    <div class="form-group">
+                                        <label for="edit-email">
+                                            Email Address <span class="required">*</span>
+                                        </label>
+                                        <div class="input-wrapper">
+                                            <span class="input-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                            </span>
+                                            <input type="email" id="edit-email" name="email" required>
+                                        </div>
+                                        <span class="error-msg" id="edit-email-error"></span>
+                                    </div>
+
+                                    <!-- Phone Field -->
+                                    <div class="form-group">
+                                        <label for="edit-phone">
+                                            Phone Number <span class="required">*</span>
+                                        </label>
+                                        <div class="input-wrapper">
+                                            <span class="input-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                            </span>
+                                            <input type="tel" id="edit-phone" name="phone" required>
+                                        </div>
+                                        <span class="error-msg" id="edit-phone-error"></span>
+                                    </div>
+
+                                    <!-- Company Field -->
+                                    <div class="form-group">
+                                        <label for="edit-company">
+                                            Company <span class="optional">(Optional)</span>
+                                        </label>
+                                        <div class="input-wrapper">
+                                            <span class="input-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                                            </span>
+                                            <input type="text" id="edit-company" name="company">
+                                        </div>
+                                        <span class="error-msg" id="edit-company-error"></span>
+                                    </div>
+
+                                    <!-- Role Field -->
+                                    <div class="form-group">
+                                        <label for="edit-role">
+                                            Role <span class="optional">(Optional)</span>
+                                        </label>
+                                        <div class="input-wrapper">
+                                            <span class="input-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                                            </span>
+                                            <input type="text" id="edit-role" name="role" placeholder="e.g., Lead Architect">
+                                        </div>
+                                        <span class="error-msg" id="edit-role-error"></span>
+                                    </div>
+
+                                    <!-- Category Field -->
+                                    <div class="form-group">
+                                        <label for="edit-category">
+                                            Category <span class="required">*</span>
+                                        </label>
+                                        <div class="input-wrapper">
+                                            <span class="input-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+                                            </span>
+                                            <select id="edit-category" name="category" class="form-select">
+                                                <option value="General">General</option>
+                                                <option value="Management">Management</option>
+                                                <option value="Engineering">Engineering</option>
+                                                <option value="Design">Design</option>
+                                                <option value="Operations">Operations</option>
+                                            </select>
+                                        </div>
+                                        <span class="error-msg" id="edit-category-error"></span>
+                                    </div>
+
+                                    <!-- Profile Image Field -->
+                                    <div class="form-group full-width">
+                                        <label>Profile Image <span class="optional">(Optional)</span></label>
+                                        <div class="photo-upload-wrapper">
+                                            <div class="photo-upload-box" id="edit-photo-box">
+                                                <div class="photo-upload-preview" id="edit-preview-container">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                                    <span class="upload-label">Upload Photo</span>
+                                                </div>
+                                                <input type="file" id="edit-photo-file" accept="image/*" class="file-input-hidden">
+                                            </div>
+                                            <button type="button" class="btn btn-outline btn-sm clear-photo-btn" id="edit-clear-photo" style="display:none;">Clear Photo</button>
+                                            <input type="hidden" id="edit-photo" name="profile_image_url">
+                                        </div>
+                                        <span class="error-msg" id="edit-photo-error"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="button" class="btn btn-outline btn-cancel-dashboard">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- ========================================== -->
+                    <!-- SCREEN D: ABOUT APPLICATION SCREEN -->
+                    <!-- ========================================== -->
+                    <div id="screen-about" class="dashboard-screen">
+                        <button class="back-link btn-back-dashboard">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                            Back to Dashboard
+                        </button>
+                        
+                        <div class="screen-header">
+                            <div>
+                                <h2 class="screen-title">About ContactHub</h2>
+                                <p class="screen-subtitle">Version 1.0.0 - Premium Client-Side Experience</p>
+                            </div>
+                        </div>
+
+                        <div class="about-card">
+                            <p><strong>ContactHub</strong> is a sleek, modern, and smart Contact Management web application designed to help you organize your network effortlessly. Built using vanilla HTML5, premium custom CSS, and Javascript, it focuses on high performance, clean visual systems, and responsiveness.</p>
+                            
+                            <h3>Key Features</h3>
+                            <ul>
+                                <li><strong>Premium Aesthetics:</strong> Modern styling inspired by award-winning typography grids, vibrant colors, subtle micro-animations, and full dark-mode capabilities.</li>
+                                <li><strong>Client-Side Persistence:</strong> Instant loading and persistent contact changes directly inside your browser using <code>LocalStorage</code>.</li>
+                                <li><strong>Smart Input Validation:</strong> Preventing broken formats (emails and phone numbers) and avoiding duplicate email addresses in real-time.</li>
+                                <li><strong>Frictionless CRUD:</strong> Seamless transitions for adding, viewing details, updating, and removing contacts with confirmation safeguards.</li>
+                            </ul>
+                            
+                            <hr class="divider">
+                            
+                            <p class="about-footer">Developed in 2026. Designed for absolute pixel efficiency, high contrast reading, and seamless mobile scaling.</p>
+                        </div>
+                    </div>
+
+                </main>
+
+                <!-- Dashboard Footer -->
+                <footer class="app-footer">
+                    <div class="footer-left">
+                        <span class="footer-logo">ContactHub</span>
+                        <span class="footer-copyright">&copy; 2026 ContactHub. Precision Engineered.</span>
+                    </div>
+                    <div class="footer-right">
+                        <a href="#" class="footer-link">Privacy Policy</a>
+                        <a href="#" class="footer-link">Terms of Service</a>
+                        <a href="#" class="footer-link">Security</a>
+                        <a href="#" class="footer-link">Cookie Settings</a>
+                    </div>
+                </footer>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 3. MODAL CONFIRMATION DIALOG -->
+        <!-- ========================================================================= -->
+        <div id="delete-modal" class="modal-overlay">
+            <div class="modal-card">
+                <button class="modal-close-btn" id="modal-close-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+                <div class="modal-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+                </div>
+                <h3 class="modal-title">Are you sure?</h3>
+                <p class="modal-message">Are you sure you want to delete this contact? This action cannot be undone.</p>
+                <!-- Hidden inputs to hold item to delete -->
+                <input type="hidden" id="delete-contact-id">
+                <div class="modal-actions">
+                    <button class="btn btn-outline" id="modal-cancel-btn">Cancel</button>
+                    <button class="btn btn-danger" id="modal-confirm-btn">Delete</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Application Script -->
+    <script src="app.js"></script>
+</body>
+</html>
