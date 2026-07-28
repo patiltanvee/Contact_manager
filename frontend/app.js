@@ -94,7 +94,7 @@ async function initData() {
 
     try {
 
-        const response = await fetch("http://127.0.0.1:5000/contacts");
+        const response = await fetch(`${API_URL}/contacts`)
         const data = await response.json();
 
         if (data.success) {
@@ -587,14 +587,14 @@ async function handleAddFormSubmit(e) {
         category,
         profile_image_url
     };
-    try {
-        const response = await fetch("http://127.0.0.1:5000/contacts", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(newContact)
-        });
+   try {
+    const response = await fetch(`${API_URL}/contacts`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newContact)
+    });
         const result = await response.json();
         if (!result.success) {
             alert(result.message);
@@ -663,7 +663,7 @@ async function handleEditFormSubmit(e) {
     if (!isValid) return;
 
     try {
-        const response = await fetch(`http://127.0.0.1:5000/contacts/${id}`, {
+        const response = await fetch(`${API_URL}/contacts/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -1008,7 +1008,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
         const response = await fetch(
-            `http://127.0.0.1:5000/contacts/${idToDelete}`,
+            `${API_URL}/contacts/${idToDelete}`,
             {
                 method: "DELETE"
             }
