@@ -2,6 +2,9 @@
 
 A clean, minimal, and high-performance contact directory designed to organize professional connections effortlessly. Built with simplicity in mind, ContactHub features a sleek, dark-mode default visual design, real-time index searching, robust input validation, and a persistent database backend.
 
+👉 **Live Link:** [https://econtacthub.netlify.app/](https://econtacthub.netlify.app/)
+
+
 ## Team Members
 *   **Tanvi Patil**
 *   **Ananya Kadam**
