@@ -1,12 +1,6 @@
 const API_URL = "https://contact-hub-j1g5.onrender.com";
 
 // ========================================================================= //
-// INITIAL / DEFAULT DATA                                                    //
-// ========================================================================= //
-
-const DEFAULT_CONTACTS = [];
-
-// ========================================================================= //
 // STATE MANAGEMENT & DATA PERSISTENCE                                       //
 // ========================================================================= //
 
@@ -22,7 +16,7 @@ let addPhotoBase64 = "";
 let editPhotoBase64 = "";
 
 
-// Load contacts from LocalStorage or initialize with defaults
+// Load contacts from the database API
 async function initData() {
 
     try {
@@ -36,14 +30,14 @@ async function initData() {
 
         } else {
 
-            state.contacts = DEFAULT_CONTACTS;
+            state.contacts = [];
 
         }
 
     } catch (error) {
 
-        console.warn("Unable to connect to Flask backend. Falling back to local mock data.", error);
-        state.contacts = DEFAULT_CONTACTS;
+        console.warn("Unable to connect to Flask backend. Initializing empty contact list.", error);
+        state.contacts = [];
 
     }
 
