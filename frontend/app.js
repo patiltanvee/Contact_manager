@@ -4,74 +4,7 @@ const API_URL = "https://contact-hub-j1g5.onrender.com";
 // INITIAL / DEFAULT DATA                                                    //
 // ========================================================================= //
 
-const DEFAULT_CONTACTS = [
-    {
-        id: "1",
-        name: "Jane Cooper",
-        email: "jane.cooper@acme.com",
-        phone: "+1 234 567 8900",
-        company: "Acme Corporation",
-        profile_image_url: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150",
-        lastConnected: "2 hours ago",
-        role: "Director of Ops",
-        category: "Operations"
-    },
-    {
-        id: "2",
-        name: "Robert Fox",
-        email: "robert.fox@tech.com",
-        phone: "+1 987 654 3210",
-        company: "Tech Solutions",
-        profile_image_url: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150",
-        lastConnected: "Yesterday",
-        role: "Project Manager",
-        category: "Management"
-    },
-    {
-        id: "3",
-        name: "Cody Fisher",
-        email: "cody.fisher@creative.com",
-        phone: "+1 456 789 0123",
-        company: "Creative Studio",
-        profile_image_url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150",
-        lastConnected: "3 days ago",
-        role: "Creative Lead",
-        category: "Design"
-    },
-    {
-        id: "4",
-        name: "Wade Warren",
-        email: "wade.warren@enterprise.com",
-        phone: "+1 321 654 0987",
-        company: "Warren Enterprises",
-        profile_image_url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
-        lastConnected: "3 days ago",
-        role: "CEO",
-        category: "Management"
-    },
-    {
-        id: "5",
-        name: "Savannah Green",
-        email: "savannah.green@greenlabs.com",
-        phone: "+1 654 321 0987",
-        company: "Green Labs",
-        profile_image_url: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150",
-        lastConnected: "1 week ago",
-        role: "Developer",
-        category: "Engineering"
-    },
-    {
-        id: "6",
-        name: "Dianne Russell",
-        email: "dianne.russell@business.com",
-        phone: "+1 789 123 4567",
-        company: "Business Co.",
-        profile_image_url: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150",
-        lastConnected: "1 month ago",
-        role: "HR Partner",
-        category: "Operations"
-    }
-];
+const DEFAULT_CONTACTS = [];
 
 // ========================================================================= //
 // STATE MANAGEMENT & DATA PERSISTENCE                                       //
@@ -80,7 +13,7 @@ const DEFAULT_CONTACTS = [
 let state = {
     contacts: [],
     currentView: 'contacts', // 'landing', 'contacts', 'add-contact', 'edit-contact', 'about'
-    darkMode: false,
+    darkMode: true,
     selectedCategory: 'all'
 };
 
@@ -103,22 +36,32 @@ async function initData() {
 
         } else {
 
-            state.contacts = [];
+            state.contacts = DEFAULT_CONTACTS;
 
         }
 
-        const savedTheme = localStorage.getItem('contacthub_dark_mode');
-        state.darkMode = savedTheme !== 'false';
-
-        renderContactsList();
-
     } catch (error) {
 
-        console.error(error);
-
-        alert("Unable to connect to Flask backend.");
+        console.warn("Unable to connect to Flask backend. Falling back to local mock data.", error);
+        state.contacts = DEFAULT_CONTACTS;
 
     }
+
+    const savedTheme = localStorage.getItem('contacthub_dark_mode');
+    state.darkMode = savedTheme !== 'false';
+
+    const appEl = document.getElementById('app');
+    if (appEl) {
+        if (state.darkMode) {
+            appEl.classList.remove('light-mode');
+            appEl.classList.add('dark-mode');
+        } else {
+            appEl.classList.remove('dark-mode');
+            appEl.classList.add('light-mode');
+        }
+    }
+
+    renderContactsList();
 
 }
 
@@ -242,17 +185,6 @@ function isValidPhone(phone) {
     const cleanDigits = phone.replace(/[\s\-\(\)\+]/g, '');
     const isDigitsOnly = /^\d+$/.test(cleanDigits);
     return isDigitsOnly && cleanDigits.length >= 7 && cleanDigits.length <= 15;
-}
-
-// Check for duplicate email across other contacts
-function isDuplicateEmail(email, currentId = null) {
-    const lowerEmail = email.trim().toLowerCase();
-    return state.contacts.some(contact => {
-        if (currentId && contact.id === currentId) {
-            return false; // Skip the contact itself when editing
-        }
-        return contact.email.toLowerCase() === lowerEmail;
-    });
 }
 
 // ========================================================================= //
