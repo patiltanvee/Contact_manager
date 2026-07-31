@@ -1,4 +1,4 @@
-const API_URL = "https://contact-hub-j1g5.onrender.com";
+const API_URL = "https://contact-manager-9smd.onrender.com";
 
 // ========================================================================= //
 // STATE MANAGEMENT & DATA PERSISTENCE                                       //
